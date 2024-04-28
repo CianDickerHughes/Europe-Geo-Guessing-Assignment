@@ -1,0 +1,7 @@
+{
+  "name": "EuropeGeoGuessing",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

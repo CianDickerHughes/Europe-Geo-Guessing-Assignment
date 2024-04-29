@@ -25,3 +25,24 @@
 #container a {
   text-decoration: none;
 }
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #FFCC00;
+}
+
+ion-card {
+  padding: 15px;
+  background-color: #003399;
+  text-align: center;
+}
+
+ion-card:hover {
+  background-color: #1052d4;
+  img {
+    background-color: #ffd52b;
+  }
+}
+

@@ -10,4 +10,8 @@ export const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
+  {
+    path: 'facts-europe',
+    loadComponent: () => import('./facts-europe/facts-europe.page').then( m => m.FactsEuropePage)
+  },
 ];

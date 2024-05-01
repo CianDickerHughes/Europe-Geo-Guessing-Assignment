@@ -1,6 +1,5 @@
 #container {
   text-align: center;
-
   position: absolute;
   left: 0;
   right: 0;
@@ -16,9 +15,7 @@
 #container p {
   font-size: 16px;
   line-height: 22px;
-
   color: #8c8c8c;
-
   margin: 0;
 }
 
@@ -34,9 +31,14 @@ img {
 }
 
 ion-card {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   padding: 15px;
   background-color: #003399;
   text-align: center;
+  width: 80%;
+
 }
 
 ion-card:hover {

@@ -13,17 +13,13 @@
       <ion-title size="large">facts-europe</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-card *ngFor="let country of europeGeo">
+    <img alt="flag" src="{{country.Flag}}" width="250" />
+    <ion-card-header>
+      <ion-card-title>{{country.Name}}</ion-card-title>
+      <ion-card-subtitle>{{country.Founded}}</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
 </ion-content>
-
-
-<ion-card *ngFor="let geo of europeGeo">
-  <img alt="flag" src="{{geo.Flag}}" width="250" />
-  <ion-card-header>
-    <ion-card-title>{{geo.Name}}</ion-card-title>
-    <ion-card-subtitle>{{geo.Founded}}</ion-card-subtitle>
-  </ion-card-header>
-
-  <ion-card-content>
-    Here's a small text description for the card content. Nothing more, nothing less.
-  </ion-card-content>
-</ion-card>

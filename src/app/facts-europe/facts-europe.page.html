@@ -1,25 +1,27 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons>
+    <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
-      <ion-title>facts-europe</ion-title>
     </ion-buttons>
+    <ion-searchbar [placeholder]="searchPlaceholder" (ionChange)="searchCountries($event)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">facts-europe</ion-title>
+      <ion-title size="large">Facts-Europe</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-card *ngFor="let country of europeGeo">
-    <img alt="flag" src="{{country.Flag}}" width="250" />
+  <ion-card *ngFor="let country of filteredCountries" (click)="openConutry(country)">
+    <img alt="flag" [src]="country.Flag" width="250" />
     <ion-card-header>
-      <ion-card-title>{{country.Name}}</ion-card-title>
-      <ion-card-subtitle>{{country.Founded}}</ion-card-subtitle>
+      <ion-card-title>{{ country.Name }}</ion-card-title>
+      <ion-card-subtitle>{{ country.Founded }}</ion-card-subtitle>
     </ion-card-header>
   </ion-card>
 
+  <br><br><br><br><br> <!-- stop cut off end of page when scrolling -->
+  <p></p>
 </ion-content>

@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button defaultHref="/"></ion-back-button>
+      <ion-title>{{factCountry.Name}}</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{factCountry.Name}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <img alt="flag" src="{{factCountry.Flag}}" width="250" />
+    <ion-card-header>
+      <ion-card-title>{{factCountry.Name}}</ion-card-title>
+      <ion-card-subtitle>Founded {{factCountry.Founded}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Population of {{factCountry.Name}} is {{factCountry.population}} and it's Population Ranks in the word is {{factCountry.PopulationRanks}}.</p>
+      <p>{{factCountry.Name}} has a Land Area of {{factCountry.area}} Km.</p>
+      <p>The GDP of {{factCountry.Name}} is {{factCountry.GDP}}.</p>
+      <br>
+      <ion-list>
+        <ion-list-header>Facts</ion-list-header>
+        <ion-item *ngFor="let fact of factCountry.Facts">
+          <ion-label>{{ fact.Fact1 }}</ion-label>
+        </ion-item>
+        <ion-item *ngFor="let fact of factCountry.Facts">
+          <ion-label>{{ fact.Fact2 }}</ion-label>
+        </ion-item>
+        <ion-item *ngFor="let fact of factCountry.Facts">
+          <ion-label>{{ fact.Fact3 }}</ion-label>
+        </ion-item>
+        <ion-item *ngFor="let fact of factCountry.Facts">
+          <ion-label>{{ fact.Fact4 }}</ion-label>
+        </ion-item>
+        <ion-item *ngFor="let fact of factCountry.Facts">
+          <ion-label>{{ fact.Fact5 }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <br><br><br><br><br> <!-- stop cut off end of page when scrolling -->
+  <p></p>
+</ion-content>

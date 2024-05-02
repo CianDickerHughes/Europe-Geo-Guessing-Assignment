@@ -14,4 +14,8 @@ export const routes: Routes = [
     path: 'facts-europe',
     loadComponent: () => import('./facts-europe/facts-europe.page').then( m => m.FactsEuropePage)
   },
+  {
+    path: 'country',
+    loadComponent: () => import('./country/country.page').then( m => m.CountryPage)
+  },
 ];

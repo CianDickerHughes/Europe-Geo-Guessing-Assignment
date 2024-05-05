@@ -18,4 +18,12 @@ export const routes: Routes = [
     path: 'country',
     loadComponent: () => import('./country/country.page').then( m => m.CountryPage)
   },
+  {
+    path: 'quiz-europe',
+    loadComponent: () => import('./quiz-europe/quiz-europe.page').then( m => m.QuizEuropePage)
+  },
+  {
+    path: 'quiz',
+    loadComponent: () => import('./quiz/quiz.page').then( m => m.QuizPage)
+  },
 ];

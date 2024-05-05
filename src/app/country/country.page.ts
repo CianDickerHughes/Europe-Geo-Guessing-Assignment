@@ -13,8 +13,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CountryPage implements OnInit {
   factCountry: any = {};
-  
-  constructor(private router:ActivatedRoute) { }
+
+  constructor(private router: ActivatedRoute) { }
 
   // get json data from facts-europer.page.ts
   ngOnInit() {

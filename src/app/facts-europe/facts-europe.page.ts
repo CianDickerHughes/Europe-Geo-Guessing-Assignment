@@ -18,10 +18,7 @@ import { NavController } from '@ionic/angular';
   templateUrl: './facts-europe.page.html',
   styleUrls: ['./facts-europe.page.scss'],
   standalone: true,
-  imports: [IonFooter, IonSearchbar, IonCardTitle, IonCardHeader, IonCard, IonButtons,
-    IonContent, IonHeader, IonTitle, IonToolbar, CommonModule,
-    FormsModule, IonButton, IonBackButton, IonCardSubtitle,
-    IonCardContent, RouterLinkWithHref]
+  imports: [IonFooter, IonSearchbar, IonCardTitle, IonCardHeader, IonCard, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonBackButton, IonCardSubtitle, IonCardContent, RouterLinkWithHref]
 })
 export class FactsEuropePage implements OnInit {
   europeGeo: any = [];
@@ -50,7 +47,7 @@ export class FactsEuropePage implements OnInit {
 
   // change text for placeholder name on ion-searchbar
   changePlaceholder() {
-    this.searchPlaceholder = "Search something else";
+    this.searchPlaceholder;
   }
 
   // search Countries from json data

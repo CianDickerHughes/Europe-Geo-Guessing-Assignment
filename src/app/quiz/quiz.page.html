@@ -1,0 +1,86 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Quiz</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <button (click)="show()">test</button>
+
+  <ion-card *ngFor="let country of countryQuiz">
+    <img alt="flag" [src]="country.Flag" width="250" />
+    <ion-card-header>
+    </ion-card-header>
+    <ion-card-content>
+      <p>It Founded in {{ country.Founded }}</p>
+      <p>The Population is {{country.population}} and it's Population Ranks in the world is {{country.PopulationRanks}}.
+      </p>
+      <p>It has a Land Area of {{country.area}} Km.</p>
+      <p>The GDP is {{country.GDP}}.</p>
+      <br>
+      <ion-list>
+        <ion-list-header>Facts</ion-list-header>
+        <ion-item *ngFor="let fact of country.Facts">
+          <ion-label>{{ fact.Fact1 }}</ion-label>
+        </ion-item>
+        <ion-item *ngFor="let fact of country.Facts">
+          <ion-label>{{ fact.Fact2 }}</ion-label>
+        </ion-item>
+        <ion-item *ngFor="let fact of country.Facts">
+          <ion-label>{{ fact.Fact3 }}</ion-label>
+        </ion-item>
+        <ion-item *ngFor="let fact of country.Facts">
+          <ion-label>{{ fact.Fact4 }}</ion-label>
+        </ion-item>
+        <ion-item *ngFor="let fact of country.Facts">
+          <ion-label>{{ fact.Fact5 }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-list>
+      <ion-radio-group [(ngModel)]="choice">
+        <ion-list-header>
+          <ion-label>Choices</ion-label>
+        </ion-list-header>
+
+        <ion-item *ngFor="let option of countryQuizOptions">
+          <ion-label>{{ option }}</ion-label>
+          <ion-radio [value]="option" slot="end"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+    <ion-button (click)="submitQuiz()">Submit</ion-button>
+  </ion-card>
+
+
+
+  <br><br><br><br><br> <!-- stop cut off end of page when scrolling -->
+  <p></p>
+</ion-content>
+
+
+<!--
+
+
+ <form (ngSubmit)="submitQuiz()">
+  <ion-card>
+    <ion-card-header>Choices</ion-card-header>
+    <ion-list>
+      <ion-radio-group name="countryOptions" [(ngModel)]="choice">
+        <ion-item *ngFor="let option of countryQuizOptions">
+          <ion-label>{{ option }}</ion-label>
+          <ion-radio [value]="option"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </ion-card>
+  <ion-button type="submit">Submit</ion-button>
+</form>
+-->

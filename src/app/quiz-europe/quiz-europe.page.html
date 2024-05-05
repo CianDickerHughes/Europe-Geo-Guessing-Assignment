@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-buttons>
+    <ion-back-button defaultHref="/"></ion-back-button>
+    <ion-title>Quiz Europe</ion-title>
+  </ion-buttons>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Quiz Europe</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card class="card">
+    <ion-card-title>Game Rules</ion-card-title>
+    <p>Guess 10 Questions quiz of Europe facts and each<br>Question has 4 Choices.</p>
+    <p>You be given the Facts or the Flag of the country<br>and you select the coutry you think is correct.</p>
+  </ion-card>
+  <br>
+  <button (click)="startGame()">Start Game</button>
+  <br>
+  <ion-card class="card">
+    <h3>Game Played</h3>
+
+  </ion-card>
+  <br><br><br><br><br> <!-- stop cut off end of page when scrolling -->
+</ion-content>

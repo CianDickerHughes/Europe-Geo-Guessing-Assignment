@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-buttons>
-    <ion-back-button defaultHref="/"></ion-back-button>
+    <ion-back-button defaultHref="/home"></ion-back-button>
     <ion-title>Quiz Europe</ion-title>
   </ion-buttons>
 </ion-header>
@@ -22,7 +22,12 @@
   <br>
   <ion-card class="card">
     <h3>Game Played</h3>
-
+    <p>Game Played: {{gamePlayed}}</p>
+    <p>Game Won: {{gameWon}}</p>
+    <p>Game Lost: {{gameWon}}</p>
   </ion-card>
+
   <br><br><br><br><br> <!-- stop cut off end of page when scrolling -->
+  <p></p>
+  
 </ion-content>

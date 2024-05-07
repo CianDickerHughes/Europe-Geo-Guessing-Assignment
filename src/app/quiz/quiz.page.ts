@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonButtons, IonBackButton, IonListHeader, IonItem, IonList, IonLabel, IonCardContent, IonRadio, IonButton, IonRadioGroup } from '@ionic/angular/standalone';
+import { Router } from '@angular/router';
 import { EuropeGeoGuessingService } from '../services/europe-geo-guessing.service';
 
 
@@ -17,11 +18,14 @@ export class QuizPage implements OnInit {
   countryQuiz: any = [];
   countryUsed: any = [];
   countryQuizOptions: any = [];
+  correctCountries: any = [];
+  userChoiceCountries: any = [];
   correctCountry: any;
   choice: string = "";
   score: number = 0;
+  gamesPlayed: number = 0;
 
-  constructor(private geoServiec: EuropeGeoGuessingService) { }
+  constructor(private geoServiec: EuropeGeoGuessingService, private router: Router) { }
 
   // get json data from europe-geo-guessing.service
   ngOnInit(): void {
@@ -60,20 +64,20 @@ export class QuizPage implements OnInit {
   getRandomCountryNames() {
     if (Array.isArray(this.europeGeo) && this.europeGeo.length > 0) {
       const availableCountries = this.europeGeo.filter(country => !this.countryUsed.includes(country.Name));
-  
+
       const correctCountryIndex = availableCountries.findIndex(country => country.Name === this.countryQuiz[0].Name);
       if (correctCountryIndex !== -1) {
         availableCountries.splice(correctCountryIndex, 1);
       }
-    
+
       const shuffledCountries = this.shuffle(availableCountries.map(country => country.Name));
       this.countryQuizOptions = shuffledCountries.slice(0, 3);
       this.countryQuizOptions.push(this.countryQuiz[0].Name);
       this.correctCountry = this.countryQuiz[0].Name;
-  
+
       this.shuffle(this.countryQuizOptions);
     } else {
-      this.countryQuizOptions = []; 
+      this.countryQuizOptions = [];
     }
   }
 
@@ -94,29 +98,29 @@ export class QuizPage implements OnInit {
 
   // submit the answer from the ion-radio
   submitQuiz() {
-    if (this.choice === this.correctCountry) {
+    if (this.choice === this.correctCountry) { // if answer is correct or wrong
       console.log("Correct answer!");
       this.score++;
     } else {
       console.log("Wrong answer!");
     }
-  }
+    
+    this.correctCountries.push(this.correctCountry);
+    this.userChoiceCountries.push(this.choice);
 
-  
+    this.gamesPlayed++;
+    if (this.gamesPlayed == 10) { // if 10 games played
+      console.log("game over");
+      console.log(this.score);
+      this.router.navigate(['/quiz-result', { CorrectCountries:(this.correctCountries), UserChoiceCountries:(this.userChoiceCountries), Score:(this.score) }])
 
-  show() { // debug
-    this.getACountry();
-    console.log(this.countryQuiz);
-    console.log(this.countryUsed);
-    console.log(this.countryQuizOptions);
+    }
+    else{
+      this.getACountry();
+      console.log(this.gamesPlayed);
+    }
+    
 
   }
 
 }
-
-
-/*
-
-
-
-*/

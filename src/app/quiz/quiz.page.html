@@ -9,8 +9,6 @@
 
 <ion-content [fullscreen]="true">
 
-  <button (click)="show()">test</button>
-
   <ion-card *ngFor="let country of countryQuiz">
     <img alt="flag" [src]="country.Flag" width="250" />
     <ion-card-header>
@@ -59,28 +57,7 @@
     <ion-button (click)="submitQuiz()">Submit</ion-button>
   </ion-card>
 
-
-
   <br><br><br><br><br> <!-- stop cut off end of page when scrolling -->
   <p></p>
+
 </ion-content>
-
-
-<!--
-
-
- <form (ngSubmit)="submitQuiz()">
-  <ion-card>
-    <ion-card-header>Choices</ion-card-header>
-    <ion-list>
-      <ion-radio-group name="countryOptions" [(ngModel)]="choice">
-        <ion-item *ngFor="let option of countryQuizOptions">
-          <ion-label>{{ option }}</ion-label>
-          <ion-radio [value]="option"></ion-radio>
-        </ion-item>
-      </ion-radio-group>
-    </ion-list>
-  </ion-card>
-  <ion-button type="submit">Submit</ion-button>
-</form>
--->

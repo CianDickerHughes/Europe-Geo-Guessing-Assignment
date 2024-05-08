@@ -12,6 +12,8 @@
     </ion-toolbar>
   </ion-header>
 
+<button (click)="show()"></button>
+
   <ion-card class="card">
     <ion-card-title>Game Rules</ion-card-title>
     <p>Guess 10 Questions quiz of Europe facts and each<br>Question has 4 Choices.</p>
@@ -24,10 +26,10 @@
     <h3>Game Played</h3>
     <p>Game Played: {{gamePlayed}}</p>
     <p>Game Won: {{gameWon}}</p>
-    <p>Game Lost: {{gameWon}}</p>
+    <p>Game Lost: {{gameLost}}</p>
   </ion-card>
 
   <br><br><br><br><br> <!-- stop cut off end of page when scrolling -->
   <p></p>
-  
+
 </ion-content>

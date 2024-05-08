@@ -34,4 +34,10 @@ export class QuizEuropePage implements OnInit {
     this.gameLost = this.gamePlayed - this.gameWon;
   }
 
+  show(){
+    console.log(this.gameLost);
+    console.log(this.gameWon);
+    console.log(this.gamePlayed);
+  }
+
 }

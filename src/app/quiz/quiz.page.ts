@@ -98,28 +98,32 @@ export class QuizPage implements OnInit {
 
   // submit the answer from the ion-radio
   submitQuiz() {
+    // Check if choice is empty, if yes, do nothing
+    if (!this.choice) {
+      return;
+    }
+
     if (this.choice === this.correctCountry) { // if answer is correct or wrong
       console.log("Correct answer!");
       this.score++;
     } else {
       console.log("Wrong answer!");
     }
-    
+
     this.correctCountries.push(this.correctCountry);
     this.userChoiceCountries.push(this.choice);
 
     this.gamesPlayed++;
     if (this.gamesPlayed == 10) { // if 10 games played
       console.log("game over");
-      console.log(this.score);
-      this.router.navigate(['/quiz-result', { CorrectCountries:(this.correctCountries), UserChoiceCountries:(this.userChoiceCountries), Score:(this.score) }])
+      this.router.navigate(['/quiz-result', { CorrectCountries: (this.correctCountries), UserChoiceCountries: (this.userChoiceCountries), Score: (this.score) }])
 
     }
-    else{
+    else {
       this.getACountry();
-      console.log(this.gamesPlayed);
     }
-    
+
+    this.choice = "";
 
   }
 

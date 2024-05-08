@@ -24,6 +24,7 @@ export class QuizResultPage implements OnInit {
 
   // get data from quiz.page.ts
   ngOnInit() {
+    // retrieve correct countries
     const correctParam = this.router.snapshot.paramMap.get('CorrectCountries');
     if (correctParam) {
       this.correctCountries = correctParam.split(',');
@@ -34,7 +35,7 @@ export class QuizResultPage implements OnInit {
       console.error('No correct country data received');
     }
 
-    // Retrieve user choice countries
+    // retrieve user choice countries
     const userChoiceParam = this.router.snapshot.paramMap.get('UserChoiceCountries');
     if (userChoiceParam) {
       this.userChoiceCountries = userChoiceParam.split(',');
@@ -45,7 +46,40 @@ export class QuizResultPage implements OnInit {
       console.error('No user choice country data received');
     }
 
+    // retrieve user score
+    const scoreParam = this.router.snapshot.paramMap.get('Score');
+    if (scoreParam) {
+      this.score = parseInt(scoreParam, 10); // parse the scoreParam to an integer
+      if (isNaN(this.score)) {
+        console.error('Score is not a valid number');
+      }
+    } else {
+      console.error('No score data received');
+    }
+
+    this.ionViewWillEnter();
+  }
+
+  async ionViewWillEnter() {
+    await this.storage.create();
+    this.gamePlayed = await this.storage.get('GamePlayed');
+    this.gameWon = await this.storage.get('GameWon');
     this.saveStatus();
+  }
+
+  // save game details
+  async saveStatus() {
+    this.gamePlayed++;
+    if (this.score == 10) {// increment gameWon if score is 10
+      this.gameWon++;
+    }
+
+    try {
+      await this.storage.set('GamePlayed', this.gamePlayed);
+      await this.storage.set('GameWon', this.gameWon);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   // calculate the number of rows needed
@@ -57,7 +91,7 @@ export class QuizResultPage implements OnInit {
     return Array.from({ length: maxRowCount }, (_, i) => i);
   }
 
-  // Get the countries for the specified row and type
+  // get the countries for the specified row and type
   getColumns(rowIndex: number, type: string) {
     const start = rowIndex * 2;
     let end;
@@ -73,38 +107,5 @@ export class QuizResultPage implements OnInit {
   isCorrect(country1: string, country2: string) {
     return country1 === country2;
   }
-
-  async ionViewWillEnter() {
-    await this.storage.create();
-    this.gamePlayed = await this.storage.get('GamePlayed');
-    this.gameWon = await this.storage.get('GameWon');
-  }
-
-  // save game details
-  async saveStatus() {
-    if (this.score == 10) {
-      this.gameWon++;
-    }
-    this.gamePlayed++;
-    await this.storage.set('GamePlayed', this.gamePlayed)
-      .then(
-        () => {
-        }
-      ).catch(
-        (error) => {
-          console.log(error);
-        }
-      );
-
-    await this.storage.set('GameWon', this.gameWon)
-      .then(
-        () => {
-        }
-      ).catch(
-        (error) => {
-          console.log(error);
-        }
-      );
-  };
 
 }

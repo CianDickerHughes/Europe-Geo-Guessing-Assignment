@@ -81,7 +81,7 @@ export class QuizPage implements OnInit {
     }
   }
 
-  // shuffle an array (Fisher-Yates shuffle algorithm)
+  // shuffle the array for countryQuizOptions (Fisher-Yates shuffle algorithm)
   shuffle(array: any[]): any[] {
     let currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -98,16 +98,12 @@ export class QuizPage implements OnInit {
 
   // submit the answer from the ion-radio
   submitQuiz() {
-    // Check if choice is empty, if yes, do nothing
-    if (!this.choice) {
+    if (!this.choice) { // check if choice is empty, if yes, do nothing
       return;
     }
 
     if (this.choice === this.correctCountry) { // if answer is correct or wrong
-      console.log("Correct answer!");
       this.score++;
-    } else {
-      console.log("Wrong answer!");
     }
 
     this.correctCountries.push(this.correctCountry);
@@ -117,14 +113,10 @@ export class QuizPage implements OnInit {
     if (this.gamesPlayed == 10) { // if 10 games played
       console.log("game over");
       this.router.navigate(['/quiz-result', { CorrectCountries: (this.correctCountries), UserChoiceCountries: (this.userChoiceCountries), Score: (this.score) }])
-
     }
     else {
       this.getACountry();
     }
-
     this.choice = "";
-
   }
-
 }

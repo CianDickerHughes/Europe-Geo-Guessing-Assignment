@@ -17,27 +17,23 @@ export class QuizEuropePage implements OnInit {
   gameWon: number = 0;
   gameLost: number = 0;
 
-  constructor(private router: Router, private storage:Storage) { }
+  constructor(private router: Router, private storage: Storage) { }
 
   ngOnInit() {
   }
 
+  // start quiz game
   startGame() {
     this.router.navigate(['/quiz'])
   }
 
+  // get data from storage
   async ionViewWillEnter() {
     await this.storage.create();
     this.gamePlayed = await this.storage.get('GamePlayed');
     this.gameWon = await this.storage.get('GameWon');
 
     this.gameLost = this.gamePlayed - this.gameWon;
-  }
-
-  show(){
-    console.log(this.gameLost);
-    console.log(this.gameWon);
-    console.log(this.gamePlayed);
   }
 
 }

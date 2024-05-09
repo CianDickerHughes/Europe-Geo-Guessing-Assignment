@@ -49,7 +49,7 @@ export class QuizResultPage implements OnInit {
     // retrieve user score
     const scoreParam = this.router.snapshot.paramMap.get('Score');
     if (scoreParam) {
-      this.score = parseInt(scoreParam, 10); // parse the scoreParam to an integer
+      this.score = parseInt(scoreParam, 10);
       if (isNaN(this.score)) {
         console.error('Score is not a valid number');
       }
@@ -60,10 +60,12 @@ export class QuizResultPage implements OnInit {
     this.ionViewWillEnter();
   }
 
+  // get data from storage
   async ionViewWillEnter() {
     await this.storage.create();
     this.gamePlayed = await this.storage.get('GamePlayed');
     this.gameWon = await this.storage.get('GameWon');
+
     this.saveStatus();
   }
 
@@ -74,7 +76,7 @@ export class QuizResultPage implements OnInit {
       this.gameWon++;
     }
 
-    try {
+    try { // save data to storage
       await this.storage.set('GamePlayed', this.gamePlayed);
       await this.storage.set('GameWon', this.gameWon);
     } catch (error) {
@@ -104,6 +106,7 @@ export class QuizResultPage implements OnInit {
     }
   }
 
+  // if the country correct and give it a green or red color
   isCorrect(country1: string, country2: string) {
     return country1 === country2;
   }

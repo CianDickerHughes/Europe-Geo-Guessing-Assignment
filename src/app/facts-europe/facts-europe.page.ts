@@ -1,17 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {
-  IonContent, IonHeader, IonTitle, IonToolbar,
-  IonButton, IonBackButton, IonButtons, IonCard,
-  IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonSearchbar, IonFooter
-} from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonBackButton, IonButtons, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonSearchbar, IonFooter } from '@ionic/angular/standalone';
 import { EuropeGeoGuessingService } from '../services/europe-geo-guessing.service';
 import { RouterLinkWithHref } from '@angular/router';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
-
-
+import { Browser } from '@capacitor/browser';
 
 @Component({
   selector: 'app-facts-europe',
@@ -58,8 +53,13 @@ export class FactsEuropePage implements OnInit {
         return country.Name.toLowerCase().includes(searchTerm);
       });
     } else {
-      this.filteredCountries = this.europeGeo; // Show all countries when search term is empty
+      this.filteredCountries = this.europeGeo; // show all countries when search term is empty
     }
+  }
+
+  // get borwser web page to wikipedia
+  async getBrowser() {
+    await Browser.open({ url: 'https://simple.wikipedia.org/wiki/List_of_European_countries' });
   }
 
 }

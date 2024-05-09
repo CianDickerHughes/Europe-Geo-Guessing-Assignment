@@ -19,7 +19,7 @@
   
     <ion-grid>
       <ion-row *ngFor="let index of getRows()">
-        <!-- User Choice Countries -->
+        <!-- user choice countries -->
         <ion-col size="6">
           <ng-container *ngFor="let country of getColumns(index, 'userChoice'); let i = index">
             <ion-card [ngClass]="{ 'correct': isCorrect(userChoiceCountries[index * 2 + i], correctCountries[index * 2 + i]), 'incorrect': !isCorrect(userChoiceCountries[index * 2 + i], correctCountries[index * 2 + i]) }">
@@ -29,7 +29,7 @@
             </ion-card>
           </ng-container>
         </ion-col>
-        <!-- Correct Countries -->
+        <!-- correct Countries -->
         <ion-col size="6">
           <ng-container *ngFor="let country of getColumns(index, 'correct'); let i = index">
             <ion-card class="constant-color">
